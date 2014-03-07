@@ -17,6 +17,10 @@ public class Questions {
 		sum("12","12");multiply("99999","99");
 	}
 	
+	
+	
+	//should be done using Karatsuba's Algorithm
+	//need to implement it 
 	public static void multiply(String sno1,String sno2){
 		List<Integer> no1 = new ArrayList<Integer>();
 		List<Integer> no2 = new ArrayList<Integer>();
