@@ -1,17 +1,16 @@
 package algorithm.sort;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 
 
 
 public class SortArray {
 	public static void main(String [] args){
-		int n=100;
+		int n=10;
 		final Integer A[] =RandomGen.randArray(n);
 		final Integer R[] = RandomGen.reverseArray(n);
 
@@ -22,18 +21,18 @@ public class SortArray {
 		List<Integer>revList = new ArrayList<Integer>(bkList);
 		long startTime,endTime;
 		List<Integer> result = null;
-		System.out.println("---Insertions,Selection Merge Sort  Quick Sort Heap Sort----");
+		System.out.println("---Insertions,Selection Merge Sort,Quick Sort Heap Sort,In-Place Merge,In-Place Quick----");
 
-		//Insertion sort
+		//#################Insertion sort#################
 		startTime = System.nanoTime();
 		result = SortArray.insertionSort(randList);
 		endTime = System.nanoTime();
 		System.out.println("Running Time :"+(endTime-startTime));
-		SortArray.printOP(result);
+	//	SortArray.printOP(result);
 
 		randList = new ArrayList<Integer>(rList);
 
-		//selection sort
+		//#################selection sort#################
 		startTime = System.nanoTime();
 		result = SortArray.selectionSort(randList);
 		endTime = System.nanoTime();
@@ -42,16 +41,16 @@ public class SortArray {
 
 		randList = new ArrayList<Integer>(rList);
 
-		//merge sort
+		//#################merge sort#################
 		startTime = System.nanoTime();
 		result = mergeSort(randList);
 		endTime = System.nanoTime();
 		System.out.println("Running Time :"+(endTime-startTime));
-		SortArray.printOP(result);
+		//SortArray.printOP(result);
 
 		randList = new ArrayList<Integer>(rList);
 
-		//quicksort
+		//#################quicksort####################
 		startTime = System.nanoTime();
 		result = SortArray.quicksort(randList);
 		endTime = System.nanoTime();
@@ -59,23 +58,43 @@ public class SortArray {
 		//SortArray.printOP(result);
 
 		randList = new ArrayList<Integer>(rList);
-
+		//#################Heap Sort#####################
 		startTime = System.nanoTime();
 		heapSort(randList);
 		endTime = System.nanoTime();
 		System.out.println("Running Time :"+(endTime-startTime));
 		//	SortArray.printOP(randList);
-		
-		
-		randList = new ArrayList<Integer>(rList);
 
+
+		randList = new ArrayList<Integer>(rList);
+		//#################In-Place Merge Sort#####################
 		startTime = System.nanoTime();
 		result =sortInPlace(randList, 0, randList.size()-1);//(randList);
 		endTime = System.nanoTime();
 		System.out.println("Running Time :"+(endTime-startTime));
-		SortArray.printOP(result);
+		//SortArray.printOP(result);
 
+
+		
+		randList = new ArrayList<Integer>(rList);
+		//################In-Place Quick Sort#####################
+
+		startTime = System.nanoTime();
+		result =quickInPlace(randList, 0, randList.size()-1);//(randList);
+		endTime = System.nanoTime();
+		System.out.println("Running Time :"+(endTime-startTime));
+		//SortArray.printOP(result);
+		
+		
+		
+		
+		
 		revList = new ArrayList<Integer>(bkList);
+		
+		
+
+
+
 		//*********************************Reverse Array / Worst Case Running time1*************************************************
 		System.out.println("\n Worst case : Insertion,Selection and merge sort");
 		//Insertion Sort
@@ -123,16 +142,53 @@ public class SortArray {
 		endTime = System.nanoTime();
 		System.out.println("Worst Case Time:"+(endTime-startTime));
 		//SortArray.printOP(revList);
-		
+
 		revList = new ArrayList<Integer>(bkList);
-		
+
 		startTime = System.nanoTime();
 		result = sortInPlace(bkList, 0, bkList.size()-1);
 		endTime = System.nanoTime();
 		System.out.println("Worst Case Time in place :"+(endTime-startTime));
-		SortArray.printOP(result);
+		//SortArray.printOP(result);
+		
+		revList = new ArrayList<Integer>(bkList);
+
+		
+		startTime = System.nanoTime();
+		result =quickInPlace(randList, 0, randList.size()-1);//(randList);
+		endTime = System.nanoTime();
+		System.out.println("Worst Case Time in place :"+(endTime-startTime));
+		//SortArray.printOP(result);
+		
 
 	}
+
+
+
+
+
+	/************
+	 * 
+	 * @param nlist
+	 * @return
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Functions for the sorting algorithms defines below
+	 * 
+	 */
+
+
+
+
+
+
+
+
+
+	//********************************Insertion Sort Begins******************************
+
 	public static List<Integer> insertionSort(List<Integer>nlist){
 		//System.out.println("\n Insertion Sort ");
 		int i,j,key;
@@ -148,6 +204,9 @@ public class SortArray {
 		//System.out.println("---n----"+n.toString());
 		return nlist;
 	}
+	//********************************Insertion Sort Ends*********************************
+	
+	//********************************Selection Sort Begins*******************************
 	public static List<Integer> selectionSort(List<Integer> nlist){
 		//System.out.println("\n Selection Sort");
 		int smallest,temp;
@@ -167,9 +226,9 @@ public class SortArray {
 		}
 		return nlist;
 	}
-	
-	
-	//In place merge sort
+	//********************************Selection Sort Ends***********************************
+
+	//********************************In Place Merge Sort Begins******************************
 	public static List<Integer> sortInPlace(List<Integer>nlist,int low,int high){
 		if(low >= high)
 			return null;
@@ -182,7 +241,7 @@ public class SortArray {
 			return result;
 		}
 	}
-	
+
 	public static List<Integer> mergeInPlace(List<Integer>nlist,int low,int mid,int high){
 		while(low<= mid+1){
 			if(nlist.get(low) > nlist.get(mid+1)){
@@ -205,8 +264,10 @@ public class SortArray {
 		}
 		return nlist;
 	}
+	
+	//********************************In Place Merge Sort Ends********************************************
 
-
+	//**************************************Merge Sort Begins**********************************************
 
 	public static List<Integer> mergeSort(List <Integer> nlist){
 		List<Integer>  left;
@@ -257,6 +318,11 @@ public class SortArray {
 		}
 		return result;
 	}
+	//**************************************Merge Sort Ends**********************************************
+	
+	
+	
+	//**************************************Quick Sort Begins**********************************************
 	public static List<Integer> quicksort(List<Integer> nlist){
 		//Random pRand = new Random();
 		//int index = pRand.nextInt(nlist.size());
@@ -270,8 +336,6 @@ public class SortArray {
 				less.add(nlist.get(i));
 			else //(nlist.get(i) > pivot)
 				more.add(nlist.get(i));
-			//			else
-			//				pivotList.add(nlist.get(i));
 		}
 
 		less = quicksort(less);
@@ -281,8 +345,46 @@ public class SortArray {
 		//System.out.println("less"+less.toString());
 		return less;
 	}
+	//**************************************Quick Sort Ends**********************************************
+	
+	
+	
+	//**************************************In Place Quick Sort Begin**************************************
+	
+	public static List<Integer> quickInPlace(List<Integer> nlist,int low,int high){
+		int i=low,j=high;
+		int pivot = nlist.get((low+(high-low)/2));
+		while (i<=j){
+			while(nlist.get(i)<pivot){
+				i++;
+			}
+			while(nlist.get(j) > pivot){
+				j--;
+			}
+			if(i<=j){
+				//swap
+//				nlist.set(i, nlist.get(i)^nlist.get(j));
+//				nlist.set(j, nlist.get(i)^nlist.get(j));
+//				nlist.set(i, nlist.get(i)^nlist.get(j));
+				int temp = nlist.get(i);
+				nlist.set(i, nlist.get(j));
+				nlist.set(j, temp);
+				i++;
+				j--;
+				
+			}
+		}
+		if(low <j){
+			quickInPlace(nlist, low, j);
+		}
+		if(i < high){
+			quickInPlace(nlist, i, high);
+		}
+		return nlist;
+	}
+	//*************************************In Place Quick sort End*****************************************
 
-	//**********code for heap sort begins here************* 
+	//*********************************code for Heap Sort Begins here***************************************** 
 
 	public static void heapSort(List <Integer>nlist){
 		int length = nlist.size();
@@ -321,14 +423,17 @@ public class SortArray {
 				return;
 		}
 	}
-
+	//*********************************code for Heap Sort Ends here*****************************************
+	
+	
+	
+	
+	//Helper method for printing the java.util.List
+	//can use toString method to display instead 
 
 	public static void printOP(List <Integer> list ){
 		for( int i =0 ;i<list.size();i++){
-			//System.out.println("enter"+list.size());
 			System.out.print(list.get(i)+" ");
-			//			if(i>99)
-			//				throw new RuntimeException("Where did thei val comefreom");
 		}
 	}
 
