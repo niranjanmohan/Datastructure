@@ -16,10 +16,11 @@ public class QuicksortInPlace  {
 		quicksort(value,0, value.length - 1);
 	}
 	public static void main(String[] args){
-		Integer A[] =RandomGen.randArray(20);
-		System.out.println(Arrays.asList(A).toString());
-		sort(A);
-		System.out.println(Arrays.asList(A).toString());
+		//Integer A[] =RandomGen.randArray(20);
+		Integer B[] = {3,4,10,20,33,65,12,91,88};
+		System.out.println(Arrays.asList(B).toString());
+		quicksort(B, 0, B.length-1);
+		System.out.println(Arrays.asList(B).toString());
 
 	}
 

@@ -10,7 +10,7 @@ public class RandomGen {
 		// TODO Auto-generated constructor stub
 	}
 	public static Integer[] randArray(Integer n){
-		int i,j;
+		int j;
 		Integer A[];
 		List<Integer> list = new ArrayList<Integer>();
 		Random rand = new Random();
