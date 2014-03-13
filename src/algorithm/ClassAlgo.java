@@ -31,11 +31,15 @@ public class ClassAlgo {
 		int inv = splitInv(list, 0, Arr.length-1);
 		System.out.println("the no of inversions are :"+inv);
 		System.out.println("sorted"+list.toString());
-		Integer arr[] = {  4,2, 1, 3, 5};
 		//iterative method
-		System.out.println("inversions :"+invCount(Arrays.asList(arr)));
-
-
+		System.out.println("inversions :"+invCount(Arrays.asList(Arr)));
+		
+		
+		
+		//Three sum problem
+		Integer arr[] ={0,1,2,3,4,5,6,7,8,9};
+		ThreeSum(Arrays.asList(arr),9);
+		
 
 	}
 	//Running time O(n) time 
@@ -129,10 +133,30 @@ public class ClassAlgo {
 			}
 			low++;
 		}
-
 		return inv;
-
 	}
+	
+	public static void ThreeSum (List<Integer> nlist,Integer B){
+		
+		for(int i=0;i<nlist.size()-3;i++){
+			int f =i+1;
+			int l = nlist.size()-1;
+			while(f < l){
+				int sum = nlist.get(i)+nlist.get(f)+nlist.get(l);
+				if(sum ==B){
+					System.out.println( nlist.get(i)+","+ nlist.get(f)+","+ nlist.get(l));
+					break;
+				}
+				else if(sum >B){
+					l--;
+				}
+				else
+					f++;
+			}
+		}
+	}
+	
+	
 	
 //	public static Integer mergeInv(List<Integer> nlist,int start,int mid,int end){
 //		int inv= 0;
