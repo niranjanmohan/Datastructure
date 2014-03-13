@@ -10,11 +10,9 @@ import java.util.List;
 
 public class SortArray {
 	public static void main(String [] args){
-		int n=10;
+		int n=20;
 		final Integer A[] =RandomGen.randArray(n);
 		final Integer R[] = RandomGen.reverseArray(n);
-
-
 		List <Integer>rList = Arrays.asList(A);
 		List<Integer>bkList = Arrays.asList(R);
 		List <Integer>randList = new ArrayList<Integer>(rList);
@@ -146,10 +144,10 @@ public class SortArray {
 		revList = new ArrayList<Integer>(bkList);
 
 		startTime = System.nanoTime();
-		result = sortInPlace(bkList, 0, bkList.size()-1);
+		result = sortInPlace(revList, 0, revList.size()-1);
 		endTime = System.nanoTime();
 		System.out.println("Worst Case Time in place :"+(endTime-startTime));
-		//SortArray.printOP(result);
+//		SortArray.printOP(result);
 		
 		revList = new ArrayList<Integer>(bkList);
 
@@ -158,7 +156,7 @@ public class SortArray {
 		result =quickInPlace(randList, 0, randList.size()-1);//(randList);
 		endTime = System.nanoTime();
 		System.out.println("Worst Case Time in place :"+(endTime-startTime));
-		//SortArray.printOP(result);
+		SortArray.printOP(result);
 		
 
 	}
