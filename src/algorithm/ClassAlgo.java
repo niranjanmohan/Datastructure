@@ -25,13 +25,13 @@ public class ClassAlgo {
 		Collections.sort(list);
 		System.out.println("sorted list :"+list.toString());
 		//Find the number of inversions in a Matrix
-		Integer Arr[] = {  4,2, 1, 3, 5};
+		Integer Arr[] = { 4, 2, 1, 3, 5};
 		list =Arrays.asList(Arr);
 		System.out.println(list.toString());
 		int inv = splitInv(list, 0, Arr.length-1);
 		System.out.println("the no of inversions are :"+inv);
 		System.out.println("sorted"+list.toString());
-		Integer arr[] = {  2,4, 1, 3, 5};
+		Integer arr[] = {  4,2, 1, 3, 5};
 		//iterative method
 		System.out.println("inversions :"+invCount(Arrays.asList(arr)));
 
@@ -105,7 +105,6 @@ public class ClassAlgo {
 	}
 
 	public static Integer mergeInv(List<Integer> nlist,int low,int mid,int high){
-		//List<Integer> dlist= new ArrayList<>();
 		int inv =0;
 		while(low<= mid+1){
 			if(nlist.get(low) > nlist.get(mid+1)){
@@ -134,6 +133,30 @@ public class ClassAlgo {
 		return inv;
 
 	}
+	
+//	public static Integer mergeInv(List<Integer> nlist,int start,int mid,int end){
+//		int inv= 0;
+//		int mid_c=mid+1;
+//	//	int bstart = start;
+//		System.out.println("start:"+start+"mid:"+mid+"end:"+end);
+//		while(start <=mid){
+//			System.out.println("inv"+inv+"start:"+start+"mid_c:"+mid_c+"end:"+end);
+//			if( mid_c > end ){
+//				inv+=mid+1-start;
+//				start++;
+//			}
+//			else if( nlist.get(start) > nlist.get(mid_c)){
+//				inv+=mid+1-start;
+//				mid_c++;
+//			}
+//			else{
+//				start++;
+//			}
+//		}
+//		//nlist =dlist;
+//		return inv;
+//	}
+
 
 
 
