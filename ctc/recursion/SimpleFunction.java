@@ -9,12 +9,12 @@ public class SimpleFunction {
 
 		String s= "malllam";
 		test(5);
-		System.out.println("\n -->"+pal(s,0,s.length()-1));
+		System.out.println("\n palindrome -->"+pal(s,0,s.length()-1));
 		pal(s);
 		fib(10);
-		//System.out.println("recursive-->"+fibR(5));
 		System.out.println();
 		fibR(10);
+		fibDyn(10);
 		System.out.println(" \n decimal to binary");
 		dectobin(10);
 		dectobinIT(10);
@@ -83,6 +83,22 @@ public class SimpleFunction {
 	public static void fibR(int n){
 		fibR(n,0,1);
 	}
+	//fibonacci Dynamic
+	public static void fibDyn(int N){
+		long fib[] = new long[N+1];
+		//base case
+		fib[0] =0;
+		fib[1] =1;
+		for(int n=2;n<=N;n++){
+			fib[n] = fib[n-1] +fib[n-2];
+		}
+		System.out.println();
+		System.out.println("fibonacci--->"+fib[N]);
+	}
+	
+	
+	
+	
 	public static void dectobin(int n){
 		if(n >0){
 			dectobin(n/2);
