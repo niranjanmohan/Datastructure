@@ -1,4 +1,4 @@
-package imp;
+package algorithm;
 
 public class CalcPermutation {
 	static int count =0;

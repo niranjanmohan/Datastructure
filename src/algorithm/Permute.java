@@ -1,4 +1,4 @@
-package imp;
+package algorithm;
 
 import java.util.*;
 
