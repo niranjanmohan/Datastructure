@@ -41,6 +41,7 @@ public class HeapSortCLRS {
 			index = largest;
 			hlist =maxHeapify(hlist,index,end);
 		}
+		System.out.println("after max heapify the list"+hlist.toString());
 		return hlist;
 	}
 	public static List<Integer> buildMaxHeap(List<Integer>list){

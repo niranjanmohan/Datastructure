@@ -11,7 +11,10 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class ClassAlgo {
 	public static void main(String [] args){
@@ -34,11 +37,13 @@ public class ClassAlgo {
 		//iterative method
 		System.out.println("inversions :"+invCount(Arrays.asList(Arr)));
 		
-		
-		
 		//Three sum problem
 		Integer arr[] ={0,1,2,3,4,5,6,7,8,9};
 		ThreeSum(Arrays.asList(arr),9);
+		
+		
+		//find median after insertion of n elements in fastest time
+		findMedian(list);
 		
 
 	}
@@ -154,6 +159,46 @@ public class ClassAlgo {
 					f++;
 			}
 		}
+	}
+	
+	
+	public static void findMedian(List <Integer>ls){
+		PriorityQueue<Integer> minQ = new PriorityQueue<Integer>();
+		PriorityQueue<Integer> maxQ =new PriorityQueue<>(11, new Comparator<Integer>(){
+			@Override
+			public int compare(Integer no1, Integer no2) {
+				// TODO Auto-generated method stub
+				return no2.compareTo(no1);
+			}
+		});
+		Collections.sort(ls);
+		int mid = ls.size()/2;
+		minQ.addAll(ls.subList(mid, ls.size()));
+		maxQ.addAll(ls.subList(0, mid));
+		printMedian(minQ, maxQ, 4,ls.size()+1);
+		printMedian(minQ, maxQ, 7,ls.size()+1);
+		printMedian(minQ, maxQ, 9,ls.size()+1);
+		System.out.println(ls.toString());
+	}
+	public static void printMedian(Queue<Integer>minQ,Queue<Integer>maxQ,int no,int size){
+		if(no > minQ.peek()){
+			minQ.add(no);
+		}else{
+			maxQ.add(no);
+		}
+		if(minQ.size() > maxQ.size()+1){
+			maxQ.add(minQ.poll());
+		}
+		else if(maxQ.size() > minQ.size()+1){
+			minQ.add(maxQ.poll());
+		}
+		if(size%2==0){
+			System.out.println((minQ.peek()+maxQ.peek())/2);
+		}
+		else
+			System.out.println(minQ.peek());
+	//	System.exit(0);
+		
 	}
 	
 	
