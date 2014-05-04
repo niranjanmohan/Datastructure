@@ -3,7 +3,7 @@ package algorithm;
 import java.util.HashSet;
 import java.util.Set;
 
-public class stack {
+public class PermuteR {
 	 static int counter = 0;
 	public static void main(String [] args){
 		permutation("","cat");
@@ -19,7 +19,7 @@ public class stack {
 	    	//if (n==1)
 	    	//	System.out.println(prefix);
 	        for (int i = 0; i < n; i++){
-	       // System.out.println("prefix -->"+prefix+" chart at i :"+str.charAt(i)+"  str1 :"+str.substring(0, i)+" str2-->"+str.substring(i+1, n)+" value i->"+i+" N :"+n);
+	        System.out.println("prefix -->"+prefix+" chart at i :"+str.charAt(i)+"  str1 :"+str.substring(0, i)+" str2 :"+str.substring(i+1, n)+" value i->"+i+" N :"+n);
 	        	permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
 	        }
 	    }

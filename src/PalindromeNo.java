@@ -1,11 +1,11 @@
 import java.util.Arrays;
 
 
-public class Questions {
+public class PalindromeNo {
 	
 	public static void main(String [] args){
 		int length =0;
-		String s= "abxybadf";
+		String s= "acivicla";
 		int strlen = s.length();
 		int [][] dy = new int[strlen][strlen];
 		for(int i=0;i<strlen;i++)
@@ -19,7 +19,7 @@ public class Questions {
 
 
 
-
+//dynamic prog
 	public static int findPalindrome(String s, int i, int j, int length,int [][] dy){
 		if(dy[i][j] !=0 )
 			return dy[i][j];
