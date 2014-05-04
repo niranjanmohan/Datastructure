@@ -52,10 +52,10 @@ public class TestMYGraphs {
 		
 		
 		//Perform the traversal of the graph
-		System.out.println("DFS Traversal of a tree is ------------->");
+		System.out.println("DFS Traversal of a graph is ------------->");
 		graph.dfs();
 		
-		System.out.println("\nBFS Traversal of a tree is ------------->");
+		System.out.println("\nBFS Traversal of a graph is ------------->");
 		graph.bfs();
 		
 		lgraph.displayAll();

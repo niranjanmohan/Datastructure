@@ -26,25 +26,28 @@ public class ClassAlgo {
 		System.out.println(list.toString());
 		selectR(list,0,list.size()-1,5);
 		Collections.sort(list);
-		System.out.println("sorted list :"+list.toString());
+		//System.out.println("sorted list :"+list.toString());
 		//Find the number of inversions in a Matrix
-		Integer Arr[] = { 4, 2, 1, 3, 5};
+		Integer Arr[] = { 0, 2, 1, 3, 5};
 		list =Arrays.asList(Arr);
-		System.out.println(list.toString());
 		int inv = splitInv(list, 0, Arr.length-1);
 		System.out.println("the no of inversions are :"+inv);
-		System.out.println("sorted"+list.toString());
-		//iterative method
-		System.out.println("inversions :"+invCount(Arrays.asList(Arr)));
-		
+		//System.out.println("sorted list :"+list.toString());
+
 		//Three sum problem
 		Integer arr[] ={0,1,2,3,4,5,6,7,8,9};
 		ThreeSum(Arrays.asList(arr),9);
-		
-		
+
+
 		//find median after insertion of n elements in fastest time
 		findMedian(list);
-		
+
+
+		lcs("hello","hi");
+
+
+		//iterative method in O(n^2)
+		//System.out.println("inversions :"+invCount(Arrays.asList(Arr)));
 
 	}
 	//Running time O(n) time 
@@ -94,25 +97,6 @@ public class ClassAlgo {
 		int z = mergeInv(nlist,start,mid,end);
 		return x+y+z;
 	}
-
-
-
-// iterative inversion count in o(n^2)
-	
-	public static Integer invCount(List<Integer> nlist)	{
-		int inv =0;
-		for(int i=0;i<nlist.size();i++)
-		for (int j=i+1;j<nlist.size();j++){
-			Integer temp;
-			if(nlist.get(i)>nlist.get(j)){
-				//swap
-				System.out.println("("+nlist.get(i)+","+nlist.get(j)+")");
-				inv++;
-			}
-		}
-		return inv;
-	}
-
 	public static Integer mergeInv(List<Integer> nlist,int low,int mid,int high){
 		int inv =0;
 		while(low<= mid+1){
@@ -140,9 +124,28 @@ public class ClassAlgo {
 		}
 		return inv;
 	}
-	
+
+
+
+
+	// iterative inversion count in o(n^2)
+//	public static Integer invCount(List<Integer> nlist)	{
+//		int inv =0;
+//		for(int i=0;i<nlist.size();i++)
+//			for (int j=i+1;j<nlist.size();j++){
+//				//Integer temp;
+//				if(nlist.get(i)>nlist.get(j)){
+//					//swap
+//					System.out.println("("+nlist.get(i)+","+nlist.get(j)+")");
+//					inv++;
+//				}
+//			}
+//		return inv;
+//	}
+
+
 	public static void ThreeSum (List<Integer> nlist,Integer B){
-		
+
 		for(int i=0;i<nlist.size()-3;i++){
 			int f =i+1;
 			int l = nlist.size()-1;
@@ -160,8 +163,8 @@ public class ClassAlgo {
 			}
 		}
 	}
-	
-	
+
+
 	public static void findMedian(List <Integer>ls){
 		PriorityQueue<Integer> minQ = new PriorityQueue<Integer>();
 		PriorityQueue<Integer> maxQ =new PriorityQueue<>(11, new Comparator<Integer>(){
@@ -197,34 +200,68 @@ public class ClassAlgo {
 		}
 		else
 			System.out.println(minQ.peek());
-	//	System.exit(0);
-		
+		//	System.exit(0);
+
 	}
-	
-	
-	
-//	public static Integer mergeInv(List<Integer> nlist,int start,int mid,int end){
-//		int inv= 0;
-//		int mid_c=mid+1;
-//	//	int bstart = start;
-//		System.out.println("start:"+start+"mid:"+mid+"end:"+end);
-//		while(start <=mid){
-//			System.out.println("inv"+inv+"start:"+start+"mid_c:"+mid_c+"end:"+end);
-//			if( mid_c > end ){
-//				inv+=mid+1-start;
-//				start++;
-//			}
-//			else if( nlist.get(start) > nlist.get(mid_c)){
-//				inv+=mid+1-start;
-//				mid_c++;
-//			}
-//			else{
-//				start++;
-//			}
-//		}
-//		//nlist =dlist;
-//		return inv;
-//	}
+	public static void lcs(String s1,String s2){
+		//intialize the 2D array to 0
+		
+		int len1 = s1.length();
+		int len2 = s2.length();
+		int length[][] = new int[len1+1][len2+1];
+		for(int i=0;i<len1+1;i++)
+			for(int j=0;j<len2+1;j++)
+				length[i][j] =0;
+
+		//code for the lcs
+		for(int i=0;i<len1;i++)
+			for(int j=0;j<len2;j++)
+				if(s1.charAt(i) == s2.charAt(j))
+					length[i+1][j+1] = 1+ length[i][j];
+				else 
+					length[i+1][j+1] = Math.max(length[i+1][j],length[i][j+1]);
+
+
+		StringBuilder stb = new StringBuilder();		
+		for(int x = len1, y= len2 ;x !=0 && y!=0;){
+			if(length[x][y] == length[x-1][y])
+				x--;
+			else if(length[x][y] == length[x][y-1])
+				y--;
+			else{
+				//assert(s1.charAt(x) == s2.charAt(y));
+				stb.append(s1.charAt(x-1));
+				x--;y--;
+			}
+		}
+		stb.reverse();
+		System.out.println("the Lcs is "+stb.toString());
+	}
+
+
+
+	//	public static Integer mergeInv(List<Integer> nlist,int start,int mid,int end){
+	//		int inv= 0;
+	//		int mid_c=mid+1;
+	//	//	int bstart = start;
+	//		System.out.println("start:"+start+"mid:"+mid+"end:"+end);
+	//		while(start <=mid){
+	//			System.out.println("inv"+inv+"start:"+start+"mid_c:"+mid_c+"end:"+end);
+	//			if( mid_c > end ){
+	//				inv+=mid+1-start;
+	//				start++;
+	//			}
+	//			else if( nlist.get(start) > nlist.get(mid_c)){
+	//				inv+=mid+1-start;
+	//				mid_c++;
+	//			}
+	//			else{
+	//				start++;
+	//			}
+	//		}
+	//		//nlist =dlist;
+	//		return inv;
+	//	}
 
 
 

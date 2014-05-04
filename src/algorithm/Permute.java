@@ -6,8 +6,8 @@ public class Permute<E>
 {
 	/**
 	 *    Implementation of http://en.wikipedia.org/wiki/Permutation#Systematic_generation_of_all_permutations                             &nbsp;
-          Algorithm to effeciently generate permutations of a sequence                                                                                                                   
-          until all possiblities are exhausted                    
+          Algorithm to efficiently generate permutations of a sequence                                                                                                                   
+          until all possibilities are exhausted                    
 
 	 */
 	private int[] arrIdxs;

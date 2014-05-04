@@ -178,10 +178,6 @@ public class StringArray {
 				 * 
 				 * 
 				 */
-				
-				
-				
-				
 			}
 		}
 		//print matrix

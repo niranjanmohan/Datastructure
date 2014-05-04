@@ -177,14 +177,6 @@ public class SortArray {
 	 * 
 	 */
 
-
-
-
-
-
-
-
-
 	//********************************Insertion Sort Begins******************************
 
 	public static List<Integer> insertionSort(List<Integer>nlist){

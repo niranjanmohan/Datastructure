@@ -17,7 +17,7 @@ public class stack {
 	    if (n == 0) System.out.println(prefix + counter++);
 	    else {
 	    	//if (n==1)
-	    		System.out.println(prefix);
+	    	//	System.out.println(prefix);
 	        for (int i = 0; i < n; i++){
 	       // System.out.println("prefix -->"+prefix+" chart at i :"+str.charAt(i)+"  str1 :"+str.substring(0, i)+" str2-->"+str.substring(i+1, n)+" value i->"+i+" N :"+n);
 	        	permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));

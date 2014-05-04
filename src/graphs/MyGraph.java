@@ -37,12 +37,12 @@ public class MyGraph {
 	public MyNode getUnvisitedChildNode(MyNode n){
 		int index = nodeList.indexOf(n);
 		for(int i=0;i<size;i++)
-		if(adjMatrix[index][i]==1 && nodeList.get(i).isVisited ==false){
-			return nodeList.get(i);
-		}
+			if(adjMatrix[index][i]==1 && nodeList.get(i).isVisited ==false){
+				return nodeList.get(i);
+			}
 		return null;
 	}
-	
+
 	public void bfs(){
 		Queue <MyNode>q = new LinkedList<MyNode>();
 		q.offer(this.rootNode);
@@ -87,9 +87,10 @@ public class MyGraph {
 
 
 
- class MyNode{
+class MyNode{
 	char label;
 	boolean isVisited;
+	int cost;
 	MyNode(char label){
 		this.label = label;
 	}
