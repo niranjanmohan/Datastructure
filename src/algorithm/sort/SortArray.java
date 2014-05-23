@@ -353,15 +353,11 @@ public class SortArray {
 			}
 			if(i<=j){
 				//swap
-//				nlist.set(i, nlist.get(i)^nlist.get(j));
-//				nlist.set(j, nlist.get(i)^nlist.get(j));
-//				nlist.set(i, nlist.get(i)^nlist.get(j));
 				int temp = nlist.get(i);
 				nlist.set(i, nlist.get(j));
 				nlist.set(j, temp);
 				i++;
 				j--;
-				
 			}
 		}
 		if(low <j){

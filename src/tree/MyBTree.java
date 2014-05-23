@@ -7,7 +7,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class MyBTree {
-	Node rootNode;
+	static Node rootNode;
 
 	public void addNode(int key ,String value){
 		Node newNode = new Node(key,value);
@@ -334,6 +334,27 @@ public class MyBTree {
 
 	//************************************End of the efficient algo for check height ***********************************
 
+	//*************************************check if the tree is a BST or not ********************************
+
+
+	public static boolean isBST(Node curNode,int leftData,int rightData){
+		if (curNode != null)
+			return true;
+		if(curNode.key >leftData || curNode.key <=rightData)
+			return false;
+		return (isBST(curNode.leftChild,curNode.key,rightData) && isBST(curNode.rightChild,leftData,curNode.key));
+	}
+	public static boolean isBST(){
+		return isBST(rootNode,Integer.MIN_VALUE,Integer.MAX_VALUE);
+	}
+
+	//****************************************end check of BST ************************************
+
+
+
+
+
+
 
 	public int treeHeight(){
 		return getHeight(rootNode);
@@ -376,7 +397,6 @@ public class MyBTree {
 			if(curNode == null)
 				return false;
 		}
-
 		//node has no children
 		if(curNode.leftChild ==null && curNode.rightChild == null){
 			//condition for root node
@@ -388,8 +408,6 @@ public class MyBTree {
 			else
 				parentNode.rightChild = null;
 		}
-
-
 		//node has no left child
 		else if(curNode.leftChild == null){
 			if(curNode == rootNode){
@@ -411,7 +429,6 @@ public class MyBTree {
 				parentNode.leftChild = curNode.leftChild;
 			else
 				parentNode.rightChild = curNode.leftChild;
-
 		}
 		//if the node has both children
 		else{
@@ -427,7 +444,6 @@ public class MyBTree {
 			replaceNode.leftChild = curNode.leftChild;
 			//System.out.println("outside the leftNode"+curNode.leftChild);
 		}
-
 		return true;
 	}
 	private Node getReplacementNode(Node curNode){
@@ -459,7 +475,7 @@ public class MyBTree {
 		inOrderLoad(rootNode,list);
 		return list;
 	}
-	
+
 	public void inOrderLoad(Node curNode,List<Integer> list){
 		if(curNode !=null){
 			inOrderLoad(curNode.leftChild, list);
@@ -467,13 +483,13 @@ public class MyBTree {
 			inOrderLoad(curNode.rightChild,list);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	//Step 2: Create Min tree from the array (sorted from in-order traversal)
 	public Node createMinTree (int array[]){
 		return createMinTree(array,0,array.length);
@@ -488,9 +504,9 @@ public class MyBTree {
 		n.rightChild = createMinTree(array,middle+1,end);
 		return n;
 	}
-	
-	
-	
+
+
+
 
 
 	//**************************end create Min tree
@@ -549,6 +565,17 @@ public class MyBTree {
 		return n;
 	}
 
+
+	//get the size of the tree
+	public  int sizeTree(Node curNode){
+		if (curNode == null)
+			return 0;
+		else
+			return (size(curNode.leftChild) +1 + size(curNode.rightChild));
+	}
+
+
+
 	//function to create a linked list of nodes from each level
 	public List<LinkedList<Node>> createLevelLinkedList(Node curNode){
 		List<LinkedList<Node>> result = new ArrayList<LinkedList<Node>>();
@@ -571,10 +598,7 @@ public class MyBTree {
 			}
 		}
 		return result;
-		}
-		
-
-
+	}
 
 	public class Node{
 		int key;

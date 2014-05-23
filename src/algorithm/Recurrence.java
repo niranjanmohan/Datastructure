@@ -8,11 +8,11 @@ public class Recurrence {
 		System.out.println();
 
 		//power in O(log n) time only works for power of 2
-		ans = power (2,3);
-		System.out.println(ans);
+		ans = power (2,6);
+		System.out.println("2-->"+ans);
 
 		//power of any number using bit wise
-		ans = powi(2, 1);
+		ans = powi(2, 5);
 		System.out.println("power :"+ans);
 
 
@@ -20,17 +20,21 @@ public class Recurrence {
 		//power in O(n) time
 		ans= powerBad(8);
 		//System.out.println(ans);
-
-
 	}
 	public static int power(int x,int n){
-		if(n <=0)
+		if(n ==0)
 			return 1;
 		int temp = power(x,n/2);
-		if(temp%2==0)
+		if(n%2==0)
 			return temp*temp;
 		else 
-			return temp*temp*x;
+		{
+			if(n>0){
+				return temp*temp*x;
+			}
+			else
+			return (temp*temp)/x;
+		}
 	}
 
 

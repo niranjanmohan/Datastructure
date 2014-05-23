@@ -4,7 +4,7 @@ public class KMP {
 	public static void main(String [] args){
 
 		naiveAlgo("atcgcacattatacattattatacat","attataca");
-		findWord("atcgcacattatacattattatacat","attataca");
+	//	findWord("atcgcacattatacattattatacat","attataca");
 
 	}
 

@@ -19,6 +19,8 @@ public class TestTree {
 		btree.addNode(11,"Vice Predident");
 	
 		btree.addNode(16,"CEO");
+		btree.createLevelLinkedList(btree.rootNode);
+		System.out.println("the size of the tree :"+btree.sizeTree(btree.rootNode));
 		
 //		btree1.addNode(10, "boss");
 //		btree1.addNode(1, "s/w developer");

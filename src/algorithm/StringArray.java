@@ -36,12 +36,13 @@ public class StringArray {
 
 		//replace all spaces in a String with "%20"
 		System.out.println(replaceSpace("abc def "));
-
 		//using String for my own curiosity
 		String rep = "abc def ";
 		String newstr = rep.replaceAll(" ", "20%");
 		System.out.println(newstr);
 
+		
+		
 		//if string is in for aaaabbcc output should be a3b2c2 
 		compresString("aaabbcc");
 
