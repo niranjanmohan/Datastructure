@@ -1,4 +1,4 @@
-package algorithm.sort;
+package algorithm.sort.misc;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,8 +16,6 @@ public class HeapSort {
 		System.out.println(Arrays.asList(b));
 		buildMaxHeap(b, b.length);
 		System.out.println(Arrays.asList(b));
-
-
 	}
 
 

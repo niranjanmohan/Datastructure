@@ -73,7 +73,7 @@ public class TestTree {
 		
         
         theTree.inOrderTraversal();
-       // System.out.println(theTree.deleteNode(25));
+       System.out.println("deleting node *****"+theTree.deleteNode(25));
         System.out.print("\n in order rec :");
         theTree.inOrderTraversal();
         System.out.print("\n in order rec 2:");

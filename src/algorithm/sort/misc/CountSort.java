@@ -1,8 +1,8 @@
-package algorithm.sort;
+package algorithm.sort.misc;
 import java.util.List;
 import java.util.ArrayList;
 
-public class CopyOfCountSort {
+public class CountSort {
 	public static void main(String [] args){
 		List <Integer>test = new ArrayList<Integer>();
 		for(int i=0;i<100;i++)

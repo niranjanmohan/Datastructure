@@ -435,7 +435,6 @@ public class MyBTree {
 		Node replaceParentNode = curNode;
 		Node cursorNode = curNode;
 		cursorNode = replaceNode.rightChild;
-
 		while(cursorNode != null){
 			replaceParentNode =replaceNode;
 			replaceNode= cursorNode;
@@ -459,7 +458,7 @@ public class MyBTree {
 		inOrderLoad(rootNode,list);
 		return list;
 	}
-	
+
 	public void inOrderLoad(Node curNode,List<Integer> list){
 		if(curNode !=null){
 			inOrderLoad(curNode.leftChild, list);
@@ -467,13 +466,13 @@ public class MyBTree {
 			inOrderLoad(curNode.rightChild,list);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	//Step 2: Create Min tree from the array (sorted from in-order traversal)
 	public Node createMinTree (int array[]){
 		return createMinTree(array,0,array.length);
@@ -488,9 +487,9 @@ public class MyBTree {
 		n.rightChild = createMinTree(array,middle+1,end);
 		return n;
 	}
-	
-	
-	
+
+
+
 
 
 	//**************************end create Min tree
@@ -552,8 +551,8 @@ public class MyBTree {
 	//function to create a linked list of nodes from each level
 	public List<LinkedList<Node>> createLevelLinkedList(Node curNode){
 		List<LinkedList<Node>> result = new ArrayList<LinkedList<Node>>();
-		curNode = rootNode;
 		LinkedList<Node> current = new LinkedList<Node>();
+		curNode = rootNode;
 		if(curNode !=null){
 			current.add(curNode);
 		}
@@ -571,8 +570,8 @@ public class MyBTree {
 			}
 		}
 		return result;
-		}
-		
+	}
+
 
 
 
