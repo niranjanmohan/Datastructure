@@ -3,6 +3,7 @@ package algorithm.sort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import algorithm.sort.misc.RandomGen;
@@ -66,7 +67,7 @@ public class SortArray {
 		//	SortArray.printOP(randList);
 
 
-		randList = new ArrayList<Integer>(rList);
+		randList = new LinkedList<Integer>(rList);
 		//#################In-Place Merge Sort#####################
 		startTime = System.nanoTime();
 		result =sortInPlace(randList, 0, randList.size()-1);//(randList);
@@ -143,7 +144,7 @@ public class SortArray {
 		System.out.println("Worst Case Time:"+(endTime-startTime));
 		//SortArray.printOP(revList);
 
-		revList = new ArrayList<Integer>(bkList);
+		revList = new LinkedList<Integer>(bkList);
 
 		startTime = System.nanoTime();
 		result = sortInPlace(revList, 0, revList.size()-1);
@@ -196,6 +197,7 @@ public class SortArray {
 		//System.out.println("---n----"+n.toString());
 		return nlist;
 	}
+	
 	//********************************Insertion Sort Ends*********************************
 	
 	//********************************Selection Sort Begins*******************************
