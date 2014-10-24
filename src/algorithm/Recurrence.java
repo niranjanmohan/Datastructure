@@ -7,12 +7,12 @@ public class Recurrence {
 
 		System.out.println();
 
-		//power in O(log n) time only works for power of 2
-		long ansl = pow (2l,6l);
+		//power in O(log n) time 
+		long ansl = pow (3l,4l);
 		System.out.println(ansl);
 
 		//power of any number using bit wise
-		ans = powi(2, 1);
+		ans = powi(5, 5);
 		System.out.println("power :"+ans);
 
 
@@ -57,7 +57,6 @@ public class Recurrence {
 
 	public static int powi(int base,int exp){
 		int result =1;
-		int count =0;
 		while(exp !=0){
 			//System.out.println("count :"+count++);
 			if((exp&1) != 0)

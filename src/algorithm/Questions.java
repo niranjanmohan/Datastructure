@@ -19,7 +19,12 @@ public class Questions {
 		sum("12","12");multiply("99999","99");
 		
 		System.out.println("anagra check");
-		System.out.println(isAnagram("llamalm", "malamll"));
+		System.out.println(isAnagram("lammt", "lamtm"));
+
+		
+		
+		
+		
 	}
 
 
@@ -171,34 +176,10 @@ public class Questions {
 
 	//find if 2 String are anagrams
 	public static boolean isAnagram(String s1,String s2){
-		Map<Character,Integer> cMap = new HashMap<Character,Integer>();
-		if (s1.length() != s2.length())
-			return false;
-		else {
-			for(Character c:s1.toCharArray()){
-				if(! cMap.containsKey(c))
-					cMap.put(c, 1);
-				else{
-					cMap.put(c,( cMap.get(c)+1));
-				}
-			}
-			for(Character c:s2.toCharArray()){
-				if(! cMap.containsKey(c))
-					return false;
-				else{
-					if(cMap.get(c) >1)
-						cMap.put(c, cMap.get(c)-1);
-					else
-						cMap.remove(c);
-				}
-			}
-			if(cMap.size()!=0)
-				return false;
-			else
-				return true;
-		}
+		//similar to palindrome
+		
+		return true;
 	}
-
 }
 
 
