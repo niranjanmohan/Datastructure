@@ -19,7 +19,7 @@ public class PermuteR {
 	    	//if (n==1)
 	    	//	System.out.println(prefix);
 	        for (int i = 0; i < n; i++){
-	        System.out.println("prefix -->"+prefix+" chart at i :"+str.charAt(i)+"  str1 :"+str.substring(0, i)+" str2 :"+str.substring(i+1, n)+" value i->"+i+" N :"+n);
+	     //   System.out.println("prefix -->"+prefix+" chart at i :"+str.charAt(i)+"  str1 :"+str.substring(0, i)+" str2 :"+str.substring(i+1, n)+" value i->"+i+" N :"+n);
 	        	permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
 	        }
 	    }

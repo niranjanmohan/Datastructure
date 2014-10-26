@@ -43,7 +43,7 @@ public class ClassAlgo {
 		findMedian(list);
 
 
-		lcs("hello","hi");
+		lcs("agcat","gac");
 
 
 		//iterative method in O(n^2)
@@ -262,6 +262,28 @@ public class ClassAlgo {
 	//		//nlist =dlist;
 	//		return inv;
 	//	}
+	
+	//kandanes algorithm
+	
+	public static Integer kandanes(int [] arr){
+		int local_max,global_max;
+		int start=0,end=0,start_untilnow=0;
+		local_max = global_max = arr[0];
+		for(int i=0;i<arr.length;i++){
+			local_max+= arr[i];
+			if(local_max < arr[i]){
+				local_max = arr[i];
+				start_untilnow = i;
+			}else{
+				end = i;
+			}
+			if(global_max < local_max)
+				global_max = local_max;
+				start = start_untilnow;
+		}
+		System.out.println("Start :"+start+" End :"+end);
+		return global_max;
+	}
 
 
 

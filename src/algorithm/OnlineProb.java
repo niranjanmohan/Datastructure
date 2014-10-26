@@ -14,7 +14,6 @@ public class OnlineProb {
 		int [] A ={7,-1,-5,-2, 4, -3,0};
 		int r = equi(A);
 		System.out.println(" The value is :"+ r);
-
 	}
 
 
@@ -89,7 +88,7 @@ public class OnlineProb {
 			for(int l=f;l<alist.size();l++){
 				val =1;
 				for(int j=f;j<=l;j++){
-					val*= alist.get(j);
+					val+= alist.get(j);
 					//System.out.println("value of j"+j);
 				}
 				System.out.println(" value is :"+val);
@@ -99,6 +98,10 @@ public class OnlineProb {
 		return true;
 	}
 
+
+
+
+	
 
 
 
