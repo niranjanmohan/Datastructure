@@ -11,9 +11,16 @@ public class OnlineProb {
 
 	public static void main(String [] args){
 
-		int [] A ={7,-1,-5,-2, 4, -3,0};
-		int r = equi(A);
-		System.out.println(" The value is :"+ r);
+//		int [] A ={7,-1,-5,-2, 4, -3,0};
+//		int r = equi(A);
+//		System.out.println(" The value is :"+ r);
+//		int [] A1= {1,2,2,3,5,5,7,8,9,9,9,9,9};
+//		System.out.println("Index :"+ searchBin(A1, 0, A.length-1, 9, -1));
+
+
+
+		System.out.println("sub palindrome  :"+subPalindrome("forgeeksskeegfor"));
+
 	}
 
 
@@ -22,6 +29,8 @@ public class OnlineProb {
 	public static int equi( int[] A ) {
 		long sum = 0;
 		long leftSum = 0;
+		
+		
 
 		for (int i=0;i<A.length;i++){
 			leftSum += A[i];
@@ -99,23 +108,66 @@ public class OnlineProb {
 	}
 
 
+	//Given sorted array and a number find the max index of the number in the array
 
-
+	public static int searchBin(int []A,int start,int last,int no,int found){
+		if(start > last ){
+			System.out.println("reached here");
+			return found;
+		}
+		else{
+			int mid = (start+last)/2;
+			if(A[mid] == no){
+				if(mid > found)
+					found = mid;
+				return searchBin(A,mid+1,last,no,found);
+			}
+			else if( A[mid] > no){
+				return searchBin(A,start,mid-1,no,found);
+			}
+			else{
+				return searchBin(A,mid+1,last,no,found);
+			}
+		}
+	}
+	public static String subPalindrome(String s){	
+		int len = s.length();
+	String result = null;
+	char [] sarr = s.toCharArray();
+	int arr[][] = new int[len][len];
+	for(int i=0;i<len;i++){
+		arr[i][i] = 1;
+	}
+	for(int i=0;i<len-1;i++){
+		if(sarr[i] == sarr[i+1]){
+			arr[i][i+1] = 1;
+		}
+		else{
+			arr[i][i+1] =0;
+		}
+	}
+	for(int i=2;i<len;i++)
+		for(int j=0;j+i<len;j++){
+			int k = i+j;
+			if(sarr[j] == sarr[k] && arr[j+1][k-1] == 1){
+				arr[j][k] = 1;
+				result = s.substring(j,k+1);
+			}
+			else
+				arr[j][k] =0;
+		}
+	return result;
+	}
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

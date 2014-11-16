@@ -25,9 +25,7 @@ public class TestRunner {
 		headNode.printForward();
 		
 		headNode.reverseLL(headNode);
-		headNode.printForward();
-		
-		
+		headNode.printForward();	
 		
 		LinkedListNode l1 = new LinkedListNode(1);
 		LinkedListNode headl1 = l1;
@@ -39,7 +37,7 @@ public class TestRunner {
 		l1 = l1.next;
 		headl1.printForward();
 		
-		System.exit(0);
+//		System.exit(0);
 		
 		LinkedListNode l2 = new LinkedListNode(1);
 		LinkedListNode headl2 = l2;
@@ -56,10 +54,10 @@ public class TestRunner {
 		
 		LinkedListNode pal = new LinkedListNode(0);
 		LinkedListNode palHead = pal;
-		pal.insertAfter(new LinkedListNode(2));
+		pal.insertAfter(new LinkedListNode(1));
 		pal = pal.next;
-//		pal.insertAfter(new LinkedListNode(3));
-//		pal = pal.next;
+		pal.insertAfter(new LinkedListNode(3));
+		pal = pal.next;
 		pal.insertAfter(new LinkedListNode(2));
 		pal = pal.next;
 		pal.insertAfter(new LinkedListNode(0));
@@ -71,7 +69,8 @@ public class TestRunner {
 		LinkListUtil.addNumberR(headl1, headl2, 0).printForward();
 		LinkListUtil.addNumber(headl1, headl2).printForward();
 		
-		System.out.println("###$$$$#####");
+		System.out.println("###########################$$$$#################################");
+		
 		System.out.println(LinkListUtil.isPalindrome(palHead));
 		
 		

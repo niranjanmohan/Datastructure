@@ -1,17 +1,19 @@
-package linkedlist;
+package algorithm.sort;
+
+
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class LinkedListNode {
-	int data;
-	LinkedListNode next;
-	LinkedListNode prev;
-	LinkedListNode head;
-	LinkedListNode(int data){
+public class LinkedList {
+	char data;
+	LinkedList next;
+	LinkedList prev;
+	LinkedList head;
+	LinkedList(char data){
 		this.data = data;
 	}
-	public LinkedListNode(){
+	public LinkedList(){
 		
 	}
 	public void setHead(){
@@ -19,20 +21,19 @@ public class LinkedListNode {
 	} 
 
 
-	public void insertAfter(LinkedListNode n){
+	public void insertAfter(LinkedList n){
 		if(n!=null && n != this){
 			this.next = n;
-			n.prev = this;
 		}
 	}
-	public void insertBefore(LinkedListNode n){
+	public void insertBefore(LinkedList n){
 		if(n!= null && n!=this){
 			this.prev = n;
 			n.next = this;
 		}
 	}
 	public void printForward(){
-		LinkedListNode temp = this;
+		LinkedList temp = this;
 		while (temp.next != null){
 			System.out.print(temp.data+" ");
 			temp = temp.next;
@@ -41,25 +42,10 @@ public class LinkedListNode {
 		System.out.println();
 		//System.out.println(this.data);
 	}
-	public void removeDuplicate(){
-		LinkedListNode n = this.next;
-		Set<Integer> lset = new HashSet<Integer>();
-		lset.add(this.data);
-		System.out.println(this.data);
-		while(n.next !=null){
-			if(!lset.add(n.data)){
-				System.out.println("removing "+n.data);
-				//remove the link 
-				n.prev.next = n.next;
-				n.next.prev = n.prev;
-			}
-			n = n.next;
-		}
-	}
 	//no datastructure allowed
 	public void removeDups(){
-		LinkedListNode headNode = this;
-		LinkedListNode runnerNode = this.next;
+		LinkedList headNode = this;
+		LinkedList runnerNode = this.next;
 		while(headNode.next !=null){
 			while(runnerNode.next != null){
 				if(runnerNode.data == headNode.data){
@@ -74,8 +60,8 @@ public class LinkedListNode {
 		}
 	}
 	public void findKElement(int index){
-		LinkedListNode headNode = this;
-		LinkedListNode runnerNode = this;
+		LinkedList headNode = this;
+		LinkedList runnerNode = this;
 		for(int i=0;i<index-1;i++){
 			if(runnerNode.next ==null)
 				return;
@@ -88,7 +74,7 @@ public class LinkedListNode {
 		}
 		System.out.println("the kth element :"+headNode.data);
 	}
-	public void printReverseR(LinkedListNode n){
+	public void printReverseR(LinkedList n){
 		if(n ==null)
 			System.out.println();
 		else{
@@ -96,10 +82,10 @@ public class LinkedListNode {
 			System.out.print(n.data);	
 		}
 	}
-	public void reverseLL(LinkedListNode n){
-		LinkedListNode prev = null;
-		LinkedListNode next = null;
-		LinkedListNode cur = n;
+	public void reverseLL(LinkedList n){
+		LinkedList prev = null;
+		LinkedList next = null;
+		LinkedList cur = n;
 		while(cur.next != null){
 			next = cur.next;
 			cur.next =prev;
@@ -109,7 +95,7 @@ public class LinkedListNode {
 		
 	}
 
-	public boolean deleteNode(LinkedListNode node){
+	public boolean deleteNode(LinkedList node){
 		if(node ==null || node.next ==null)
 			return false;
 		node.data = node.next.data;
@@ -118,7 +104,7 @@ public class LinkedListNode {
 	}
 
 	//find Kth element recursive
-	public static int findKR(LinkedListNode node,int k){
+	public static int findKR(LinkedList node,int k){
 		if( node == null)
 			return 0;
 		int i  = findKR(node.next,k) + 1;

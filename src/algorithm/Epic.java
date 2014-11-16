@@ -11,25 +11,19 @@ public class Epic {
 
 	public static void main(String [] args){
 		int no = 2567;
-		//		System.out.println(checkColorful(no));
-		//		System.out.println(isMagicNumber(2396));
-		//
-		//		System.out.println(checkMagic(181));
+		System.out.println(checkColorful(no));
+		System.out.println(isMagicNumber(2396));
+
+		System.out.println(checkMagic(181));
 
 		printOct(891);
 
-		//	seivePrime(100);
+		seivePrime(100);
 		printPrimePair(24);
-//		steppingNos(0, 1000);
-
+		steppingNos(0, 1000);
+		
 		int [] arr ={-2, -3, 4, -1, -2, 1, 5, -3};
 		kandanes(arr);
-		double d = 0.0099;
-
-
-
-
-
 	}
 
 	//colorful number
@@ -242,14 +236,14 @@ public class Epic {
 		}
 		//
 		String longestStr=null;
-		for(int i=0;i<len;i++){
+		for(int i=0;i<len-1;i++){
 			if(str.charAt(i) == str.charAt(i+1)){
 				arr[i][i+1] = 1;
 				longestStr = str.substring(i,i+2);
 			}
 		}
 		for(int l=3;l<len;l++)
-			for(int i=0;i<len;i++){
+			for(int i=0;i<len-1;i++){
 				int j = i+l-1;
 				if(str.charAt(i) == str.charAt(j)){
 					arr[i][j] = arr[i+1][j-1];
@@ -310,29 +304,6 @@ public class Epic {
 		System.out.println("Start :"+start+" End :"+end);
 		return global_max;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	//stepping number byn
-
-
-
-
-
 
 }
