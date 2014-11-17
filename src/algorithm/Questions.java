@@ -1,10 +1,10 @@
 package algorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class Questions {
@@ -17,14 +17,15 @@ public class Questions {
 		zeroToend(Arrays.asList(a2));
 		zeroToBegin(Arrays.asList(a2));
 		sum("12","12");multiply("99999","99");
-		
-		System.out.println("anagra check");
-		System.out.println(isAnagram("lammt", "lamtm"));
 
-		
-		
-		
-		
+		System.out.println("anagra check");
+		System.out.println(isAnagram("lammt", "lamtm") &&  isAnagram("lamtm", "lammt"));
+		int A[] = {10,25,50,60,75,15,90};
+		findCombination(A, 100);
+
+
+
+
 	}
 
 
@@ -174,41 +175,88 @@ public class Questions {
 
 
 
-	//find if 2 String are anagrams
+	//find if 2 String are anagrams 
+	
+	//******Hash map solution is to trivial to implement
 	public static boolean isAnagram(String s1,String s2){
 		//similar to palindrome
-		
+		int checker=0;
+		if(s1.length() != s2.length())
+			return false;
+		for(int i=0;i<s1.length();i++){
+			int val =s1.charAt(i) - 'a';
+			checker |= (1<<val);
+		}
+		for(int i=0;i<s2.length();i++){
+			if((checker & (1<<s2.charAt(i) - 'a')) <=0)
+				return false;
+		}
 		return true;
+	
 	}
+
+
+
+	//find all the elements of an array that add up to 100
+	public static void findCombination(int A[] , int no ){
+		Map<Integer,List<Integer>> memoMap = new HashMap<Integer,List<Integer>>();
+		Map<Integer,List<Integer>> tempMap = new HashMap<Integer,List<Integer>>();
+		List<Integer> list;
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		for(int i:A){
+			//create list 
+			if((no-i) >0 ){
+				list = new ArrayList<Integer>();
+				list.add(i);
+				tempMap.put(no-i,list);
+			}
+			for(Map.Entry<Integer,List<Integer>> pair:memoMap.entrySet()){
+				int sum = pair.getKey()-i;
+				if(sum > 0){
+					list = new ArrayList<Integer>();
+					list.addAll(pair.getValue());
+					list.add(i);
+					tempMap.put(sum,list);
+				}
+			}
+			memoMap.putAll(tempMap);		
+		}
+		System.out.println("memo map"+memoMap.toString());
+		for (int i:A){
+			if(memoMap.containsKey(i))
+				System.out.println("value :"+i+":"+memoMap.get(i).toString());
+		}
+			
+	}
+
+
+
+	//naive method with o(n^2) time need to implement  faster algo which runs in o(n) time
+	//DONT USE THIS XXXXXXXXXXXXXXXXXXXXXXXXXX
+	//public static void findMaxSlow(List<Integer> nlist){
+	//	int global_max =-9999;
+	//	int local_max=-9999;int last_index=0;
+	//	int start_index=0,global_last =0;
+	//	//Don not implement this inefficent algo
+	//	for(int i =0;i<nlist.size();i++){
+	//		//int local_last = 0;
+	//		int sum = 0;
+	//		for(int j=i;j<nlist.size();j++){
+	//			sum = nlist.get(j)+ sum;
+	//			if(sum > local_max){
+	//				local_max = sum;
+	//				last_index = j;
+	//			}
+	//		}
+	//		if(local_max > global_max){
+	//			global_max = local_max;
+	//			start_index =i;
+	//			global_last = last_index;
+	//		}
+	//	}
+	//	System.out.println("Maximum Sub-Seq :"+global_max+"indexes :"+start_index+","+global_last);
+	//}
+	//faster algo for finding max subsequence 
+
+
 }
-
-
-
-
-
-//naive method with o(n^2) time need to implement  faster algo which runs in o(n) time
-//DONT USE THIS XXXXXXXXXXXXXXXXXXXXXXXXXX
-//public static void findMaxSlow(List<Integer> nlist){
-//	int global_max =-9999;
-//	int local_max=-9999;int last_index=0;
-//	int start_index=0,global_last =0;
-//	//Don not implement this inefficent algo
-//	for(int i =0;i<nlist.size();i++){
-//		//int local_last = 0;
-//		int sum = 0;
-//		for(int j=i;j<nlist.size();j++){
-//			sum = nlist.get(j)+ sum;
-//			if(sum > local_max){
-//				local_max = sum;
-//				last_index = j;
-//			}
-//		}
-//		if(local_max > global_max){
-//			global_max = local_max;
-//			start_index =i;
-//			global_last = last_index;
-//		}
-//	}
-//	System.out.println("Maximum Sub-Seq :"+global_max+"indexes :"+start_index+","+global_last);
-//}
-//faster algo for finding max subsequence 
