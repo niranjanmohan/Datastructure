@@ -140,6 +140,12 @@ public class StringArray {
 		else
 			System.out.println(bf);
 	}
+	
+	
+	
+	
+	
+	//rotate a matrix
 	public static void rotateMatrix(int [][] mat){
 		System.out.println();
 		int size = mat.length;int top;

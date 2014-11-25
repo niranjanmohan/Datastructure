@@ -1,6 +1,7 @@
 package algorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,16 +11,25 @@ import javax.lang.model.type.PrimitiveType;
 public class DynamicProgram {
 
 	public static void main(String [] args){
-		int no = 2567;
+		//		int no = 2567;
+		//
+		//		seivePrime(100);
+		//		printPrimePair(24);
+		//		System.out.println("sub palindrome  :"+subPalindrome("forgeeksskeegfor"));
+		//
+		//		lcs("agcat","gac");
 
-		seivePrime(100);
-		printPrimePair(24);
-		System.out.println("sub palindrome  :"+subPalindrome("forgeeksskeegfor"));
+		int [] arr ={3,2,6,4,5,1,9,6,7};
+	//	getLIS(arr);
 
-		lcs("agcat","gac");
+		System.out.println("get the LIS in grid");
+		int[][] grid = {{8, 2, 4}, 
+				{0, 7, 1}, 
+				{3, 7, 9}}; 
+		System.out.println(findGridLIS(grid));
 
-		int [] arr ={-2, -3, 4, -1, -2, 1, 5, -3};
-		kandanes(arr);
+
+		//kandanes(arr);
 	}
 
 
@@ -173,7 +183,110 @@ public class DynamicProgram {
 	}
 
 
+	//find the longest increasing sub-sequence
+	public static void getLIS(int A[]){
+		int len = A.length;
+		int memo[] = new int[len];
+		int dp[] = new int[len];
+		int end =0;
+		int maxlen =1;
+		memo[0] = -1;
+		dp[0] =1;
+		for(int i=1;i<len;i++){
+			memo[i] = -1;
+			dp[i] = 1;
+			for(int j=i-1;j>=0;j--){
+				if(dp[i] < dp[j]+1 && A[i] > A[j]){
+					dp[i] = dp[j]+1;
+					memo[i] = j;//this is the start point;
+				}
+				if(maxlen < dp[i]){
+					maxlen = dp[i];
+					end = i ;
+				}
+			}
+		}
+		//print the LIS
+		System.out.println("length of MIS "+ maxlen+ "-----");
+		System.out.println();
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(A[end]);
+		//System.out.print(A[end]+" ");
+		while(memo[end] !=-1 ){
+			list.add(A[memo[end]]);
+			end = memo[end];
+		}
+		Collections.reverse(list);
+		System.out.println(list.toString());
+	}
 
+
+
+
+	//Find the LIS in a grid 
+
+
+	/* 
+	 * 8	2	4
+	 * 0	7	1
+	 * 3	7	9
+	 */
+
+
+
+	public static int findGridLIS(int A[][]){
+		int len = A.length;
+		int dp [][] = new int [len][len];
+		int max =0;
+		//intialize memoizing array with all ones
+
+		for(int i=0;i<len;i++){
+			for(int j=0;j<len;j++){
+				int tempmax = fillDP(A,dp,i,j)+1;
+				if(tempmax > max)
+					max = tempmax;
+			}
+		}
+		return max;
+
+	}
+
+	public static int fillDP(int [][]A,int[][]dp,int i,int j){
+		int len = A.length;
+		if(i <0 || j < 0 || i >= len || j >= len ){
+			return 0;
+		}
+		if(dp[i][j] != 0)
+			return dp[i][j];
+		int left=0,right=0,topLeft=0,topRight=0,bottom=0,top=0,bottomLeft=0,bottomRight=0;
+		if(j-1 >= 0&& A[i][j] < A[i][j-1])
+			left = fillDP(A,dp,i,j-1);
+	
+		if(j+1<len && A[i][j] < A[i][j+1])
+			right = fillDP(A,dp,i,j+1);
+	
+		if(i+1 <len && A[i][j] < A[i+1][j])
+			bottom = fillDP(A,dp,i+1,j);
+	
+		if(i-1 >=0 && A[i][j] < A[i-1][j])
+			top = fillDP(A,dp,i-1,j);
+	
+		if(i+1 < len && j-1 >=0 && A[i][j] < A[i+1][j-1])
+			bottomLeft = fillDP(A,dp,i+1,j-1);
+
+		if(i+1 >len && j+1 >len && A[i][j] < A[i+1][j+1])
+			bottomRight = fillDP(A,dp,i+1,j+1);
+	
+		if(i-1 >=0 && j-1 >=0 && A[i][j] < A[i-1][j-1])
+			topLeft = fillDP(A,dp,i-1,j-1);
+
+		if(i-1 >=0 && j+1 <len && A[i][j] < A[i-1][j+1])
+			topRight = fillDP(A,dp,i-1,j+1);
+	
+		dp[i][j]= Math.max(Math.max(Math.max(top,bottom),Math.max(right,left)),Math.max(Math.max(bottomRight,bottomLeft),Math.max(topLeft,topRight))) +1;
+		return dp[i][j]; 
+
+	}
 
 
 	//kandanes algorithm
@@ -197,6 +310,5 @@ public class DynamicProgram {
 		System.out.println("Start :"+start+" End :"+end);
 		return global_max;
 	}
-	//stepping number byn
 
 }

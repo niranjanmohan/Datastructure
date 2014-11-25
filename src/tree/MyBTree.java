@@ -573,6 +573,26 @@ public class MyBTree {
 	}
 
 
+	// mirrior of a tree
+	public void mirriorTree(){
+		mirriorTree(rootNode);
+	}
+	
+	public void mirriorTree(Node node){
+		if(node == null )
+			return;
+		mirriorTree(node.leftChild);
+		mirriorTree(node.rightChild);
+		swap(node);
+	}
+	public void swap(Node node){
+		Node temp = node.leftChild;
+		node.leftChild = node.rightChild;
+		node.rightChild = temp;
+	}
+
+
+
 
 
 	public class Node{

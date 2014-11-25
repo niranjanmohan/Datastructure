@@ -22,7 +22,9 @@ public class OnlineProb {
 		System.out.println(checkMagic(181));
 		printOct(891);
 		steppingNos(0, 1000);
-		
+		System.out.println("*************************");
+		getIndexProd(132);
+
 
 	}
 
@@ -274,14 +276,23 @@ public class OnlineProb {
 		return true;
 	}
 
-
-
-
-
-
-
-
-
-
-
+	public static void getIndexProd(int number){
+		int no = number;
+		int newNo=0;
+		long prod = 1l;
+		while(no > 0){
+			prod *= no%10;
+			no = no/10;
+		}
+		//form the number
+		no = number;
+		for(int i=0;no >0 ; no=no/10,i++){
+			int digit = no %10;
+			newNo += (prod/digit)*Math.pow(10,i);
+			if((prod/digit) >9)
+				i++;
+		}
+		System.out.println("new no is :"+newNo);
+	}
 }
+

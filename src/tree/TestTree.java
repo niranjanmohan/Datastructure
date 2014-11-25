@@ -118,6 +118,12 @@ public class TestTree {
 		List<Integer> list= newTree.inOrderLoad();
 		System.out.println(list.toString());
 		
+		theTree.inOrderTraversal();
+		System.out.println();
+		theTree.mirriorTree();
+		System.out.println();
+		theTree.inOrderTraversal();
+		
 		
 	}
 
