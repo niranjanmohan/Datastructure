@@ -24,7 +24,9 @@ public class OnlineProb {
 		steppingNos(0, 1000);
 		System.out.println("*************************");
 		getIndexProd(132);
-
+		
+		int AA[][] = {{1,2,3},{4,5,6},{7,8,9}};
+		printSpiralMatrix(AA);
 
 	}
 
@@ -294,5 +296,85 @@ public class OnlineProb {
 		}
 		System.out.println("new no is :"+newNo);
 	}
+	
+	
+//print matrix in spiral form
+	public static void printSpiralMatrix(int [][]A){
+		int n = A.length;
+		int m = A[0].length;
+		int x=0,y=0;
+		while(n > 0 && m >0){
+			//no more elements to circle
+			if(m ==1){
+				for(int i=0;i<m;i++)
+					System.out.println(A[x][y++]);
+				break;
+			}
+			if(n ==1){
+				for(int i=0;i<m;i++)
+					System.out.println(A[x++][y]);
+				break;
+			}
+
+			// move in circle 
+
+			//left to right
+			for(int i=0;i<m-1;i++){
+				System.out.println(A[x][y++]);
+			}
+			//right to down
+			for(int i=0;i<n-1;i++)
+				System.out.println(A[x++][y]);
+
+			//bottom right to left
+			for(int i=0;i<m-1;i++)
+				System.out.println(A[x][y--]);
+
+			//bottom to top
+			for(int i=0;i<m-1;i++)
+				System.out.println(A[x--][y]);
+
+			m = m-2;
+			n = n-2;
+			x++;
+			y++;
+		}
+
+	}
+// end of spiral matrix print 
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

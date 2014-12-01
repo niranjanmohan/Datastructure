@@ -23,7 +23,7 @@ public class Questions {
 		int A[] = {10,25,50,60,75,15,90};
 		findCombination(A, 100);
 
-
+		
 
 
 	}
@@ -230,6 +230,39 @@ public class Questions {
 	}
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	//naive method with o(n^2) time need to implement  faster algo which runs in o(n) time
 	//DONT USE THIS XXXXXXXXXXXXXXXXXXXXXXXXXX
