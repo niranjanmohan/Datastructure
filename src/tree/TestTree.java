@@ -123,6 +123,42 @@ public class TestTree {
 		theTree.mirriorTree();
 		System.out.println();
 		theTree.inOrderTraversal();
+		System.out.println();
+		System.out.println("-----------------------diag test -----------------------");
+		MyBTree diag = new MyBTree();
+		diag.addNode(10, "F");
+		diag.addNode(5,"B");
+		diag.addNode(4,"A");
+		diag.addNode(8,"D");
+		diag.addNode(9, "E");
+		diag.addNode(7, "C");
+		diag.addNode(15, "G");
+		diag.addNode(17, "I");
+		diag.addNode(16, "H");
+		diag.inOrderTraversal();
+		diag.diagonalTraverse();
+		
+		MyBTree spiral = new MyBTree();
+		spiral.addNode(10, "1");
+		spiral.addNode(5,"2");
+		spiral.addNode(4,"7");
+		spiral.addNode(8,"6");
+		//diag.addNode(9, "E");
+		//diag.addNode(7, "C");
+		spiral.addNode(15, "3");
+		spiral.addNode(17, "4");
+		spiral.addNode(14, "5");
+		
+		System.out.println();
+		System.out.println("########################starting to spiral test#######################################3");
+		spiral.inOrderTraversal();
+		spiral.spiral();
+		
+		
+		
+		
+		
+		
 		
 		
 	}

@@ -20,6 +20,7 @@ public class MyAvlTree {
 			l = curNode.leftChild.height;
 		return ( l-r);
 	}
+	
 	public Node addNode(Node curNode,int key){
 		if(curNode == null){
 			Node n = new Node(key);

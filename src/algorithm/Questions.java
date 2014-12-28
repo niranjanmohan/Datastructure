@@ -11,7 +11,7 @@ public class Questions {
 	public static void main(String [] args){
 		Integer arr[]= {-2,-5,6,-2,-3,7,-5,-6,8};
 		List <Integer>nlist= Arrays.asList(arr);
-		//findMaxSlow(nlist);
+	//	findMaxSlow(nlist);
 		findMaxFast(nlist);
 		Integer a2[]= {0,1,9,0,0,8,4,0,0,2,7,0,6,0};
 		zeroToend(Arrays.asList(a2));
@@ -22,9 +22,7 @@ public class Questions {
 		System.out.println(isAnagram("lammt", "lamtm") &&  isAnagram("lamtm", "lammt"));
 		int A[] = {10,25,50,60,75,15,90};
 		findCombination(A, 100);
-
-		
-
+	
 
 	}
 

@@ -7,20 +7,22 @@ import java.util.List;
 import java.util.Set;
 
 import javax.lang.model.type.PrimitiveType;
+import javax.swing.tree.ExpandVetoException;
 
 public class DynamicProgram {
 
 	public static void main(String [] args){
-		//		int no = 2567;
-		//
-		//		seivePrime(100);
-		//		printPrimePair(24);
-		//		System.out.println("sub palindrome  :"+subPalindrome("forgeeksskeegfor"));
-		//
-		//		lcs("agcat","gac");
+		int no = 2567;
+
+		seivePrime(100);
+		printPrimePair(24);
+		String s = "forbrod";
+		System.out.println("sub palindrome  :"+subPalindrome(s));
+		System.out.println("Longest palindrome :"+LPS(s));
+		lcs("agcat","gac");
 
 		int [] arr ={3,2,6,4,5,1,9,6,7};
-	//	getLIS(arr);
+		getLIS(arr);
 
 		System.out.println("get the LIS in grid");
 		int[][] grid = {{8, 2, 4}, 
@@ -29,7 +31,7 @@ public class DynamicProgram {
 		System.out.println(findGridLIS(grid));
 
 
-		//kandanes(arr);
+		kandanes(arr);
 	}
 
 
@@ -155,7 +157,41 @@ public class DynamicProgram {
 		return result;
 	}
 
+	public static String expandAround(String s, int start,int end){
+		int b =start;int l =end;int n = s.length();
+		System.out.println("String :"+s+ "  "+b+"  "+l);
+		b++;
+		while(b<n-1 && l >0 && s.charAt(b) == s.charAt(l)){
+			b++;l--;
+		}
+		//		if(l==1 && b== 0)
+		//			System.out.println("   ::"+b+"  ::"+l);
+		return s.substring(l,b);
+	}
 
+	public static String LPS(String s){
+		int len = s.length();
+		if(len ==0 )
+			return null;
+		String maxlen = s.substring(0,1);
+		//even plaindrome
+		for(int i=0;i<len;i++){
+			String s1 = expandAround(s,i,i);
+			if(s1.length() > maxlen.length()){
+				maxlen = s1;
+			}
+		}
+		//odd palindrome
+		for(int i=0;i<len;i++){
+			String s1 = expandAround(s,i,i+1);
+			if(s1.length() > maxlen.length()){
+				maxlen = s1;
+				System.out.println("got here");
+			}
+		}
+		return maxlen.substring(1);
+
+	}
 
 
 
@@ -261,28 +297,28 @@ public class DynamicProgram {
 		int left=0,right=0,topLeft=0,topRight=0,bottom=0,top=0,bottomLeft=0,bottomRight=0;
 		if(j-1 >= 0&& A[i][j] < A[i][j-1])
 			left = fillDP(A,dp,i,j-1);
-	
+
 		if(j+1<len && A[i][j] < A[i][j+1])
 			right = fillDP(A,dp,i,j+1);
-	
+
 		if(i+1 <len && A[i][j] < A[i+1][j])
 			bottom = fillDP(A,dp,i+1,j);
-	
+
 		if(i-1 >=0 && A[i][j] < A[i-1][j])
 			top = fillDP(A,dp,i-1,j);
-	
+
 		if(i+1 < len && j-1 >=0 && A[i][j] < A[i+1][j-1])
 			bottomLeft = fillDP(A,dp,i+1,j-1);
 
 		if(i+1 >len && j+1 >len && A[i][j] < A[i+1][j+1])
 			bottomRight = fillDP(A,dp,i+1,j+1);
-	
+
 		if(i-1 >=0 && j-1 >=0 && A[i][j] < A[i-1][j-1])
 			topLeft = fillDP(A,dp,i-1,j-1);
 
 		if(i-1 >=0 && j+1 <len && A[i][j] < A[i-1][j+1])
 			topRight = fillDP(A,dp,i-1,j+1);
-	
+
 		dp[i][j]= Math.max(Math.max(Math.max(top,bottom),Math.max(right,left)),Math.max(Math.max(bottomRight,bottomLeft),Math.max(topLeft,topRight))) +1;
 		return dp[i][j]; 
 

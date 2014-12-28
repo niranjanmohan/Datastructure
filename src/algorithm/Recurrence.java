@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.BitSet;
+
 public class Recurrence {
 	public static void main(String []args){
 		int ans;
@@ -8,7 +10,7 @@ public class Recurrence {
 		System.out.println();
 
 		//power in O(log n) time 
-		long ansl = pow (3l,4l);
+		long ansl = pow (3l,5l);
 		System.out.println(ansl);
 
 		//power of any number using bit wise
@@ -20,8 +22,23 @@ public class Recurrence {
 		//power in O(n) time
 		ans= powerBad(8);
 		//System.out.println(ans);
-
-
+		
+		getPower2(6);
+		
+		int hexVal = 0Xaaaaaaaa;
+		int hex2 = 0X55555555;
+		System.out.println("hexval :"+hexVal+ "  hex2  :"+Integer.toBinaryString(hex2));
+		System.out.println("integer of bin values :"+ Integer.parseInt("10101010101010101",2));
+	}
+	
+	//power of 2
+	public static void getPower2(int pow){
+		int n =2;
+		for(int i=0;i<pow-1;i++){
+			n = n <<1;
+		}
+		System.out.println("2 to the power of :"+pow+" is :"+n);
+	
 	}
 	
 	public static long pow(long base, long exp){        
@@ -62,7 +79,7 @@ public class Recurrence {
 			if((exp&1) != 0)
 				result*=base;
 			exp >>=1;
-			System.out.println(exp);
+			//System.out.println(exp);
 			base*=base;
 		}
 		return result;

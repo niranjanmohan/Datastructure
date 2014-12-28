@@ -11,13 +11,29 @@ public class Basics {
 	}
 	static Weather s;
 	public static void main(String [] args){
-		System.out.println(s.COLD.range);
-		Boolean [] b [];
-		Integer i =9;
-		checkBoxWiden(i);
-		System.out.println(Suits.NOTRUMP.getValue(3));
-		System.out.println(Suits.SPADES + " " + Suits.SPADES.points);
-		System.out.println(Suits.values());
+		// test bit shift and unsigned bit shift
+		
+		int i = -32;
+		System.out.println(Integer.toBinaryString(i));
+		int un = i; int s =i;int count =0;
+		while(count < 10){
+			un = un >>>1;
+			s = s>>1;
+			System.out.println("integers :"+un+ "   :"+ s);
+			System.out.println("in binary form :"+Integer.toBinaryString(un)+"   :"+Integer.toBinaryString(s));
+			count++;
+			
+		}
+		
+		
+//		
+//		System.out.println(s.COLD.range);
+//		Boolean [] b [];
+//		Integer i =9;
+//		checkBoxWiden(i);
+//		System.out.println(Suits.NOTRUMP.getValue(3));
+//		System.out.println(Suits.SPADES + " " + Suits.SPADES.points);
+//		System.out.println(Suits.values());
 	}
 	public static void checkBoxWiden(float o){
 

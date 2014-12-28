@@ -27,6 +27,10 @@ public class OnlineProb {
 		
 		int AA[][] = {{1,2,3},{4,5,6},{7,8,9}};
 		printSpiralMatrix(AA);
+		
+		int []A2 = {7,1,3,5,6};
+		System.out.println("rotattion R is :"+rotationSortedArray(A2));
+		
 
 	}
 
@@ -342,12 +346,31 @@ public class OnlineProb {
 
 	}
 // end of spiral matrix print 
+	
+	
+	// find the no of rotations of a sorted array in logn time
+
+	public static int rotationSortedArray(int []A){
+		int low =0;
+		int high = A.length-1;
+		while(A[low] > A[high]){
+			int mid =  (high+low)>>>1;
+			if(A[mid] > A[high]){
+				low = mid+1;
+			}
+			else
+				high = mid;
+		}
+		return low;
+	}
 
 
 
-
-
-
+	
+	
+	
+	
+	
 }
 
 

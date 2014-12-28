@@ -1,5 +1,6 @@
 package tree;
 
+import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -58,6 +59,7 @@ public class MyBTree {
 	public int calcHeight(){
 		return calcHeight(rootNode);
 	}
+
 	public int calcHeight(Node curNode){
 		//int height;
 
@@ -262,7 +264,7 @@ public class MyBTree {
 		if(curNode == null)
 			return 0;
 		else 
-			return Math.max(getHeight(curNode.leftChild), getHeight(curNode.rightChild)) +1;
+			return (getHeight(curNode.leftChild) + getHeight(curNode.rightChild)) +1;
 	}
 	public boolean isBalanced(Node curNode){
 		if( curNode ==null)
@@ -279,7 +281,7 @@ public class MyBTree {
 	public int getDiameter(Node rootNode){
 		if(rootNode == null)
 			return 0;
-		int rootDia = Math.max(getHeight(rootNode.rightChild), getHeight(rootNode.leftChild))+1;
+		int rootDia =(getHeight(rootNode.rightChild)+getHeight(rootNode.leftChild));
 		int leftDia = getDiameter(rootNode.leftChild);
 		int rightDia = getDiameter(rootNode.rightChild);
 		return Math.max(Math.max(leftDia, rightDia), rootDia);
@@ -313,7 +315,6 @@ public class MyBTree {
 		int rightH = checkHeight(curNode.rightChild);
 		if(rightH ==-1)
 			return -1;
-
 		int diffH = rightH-leftH;
 		if(Math.abs(diffH) > 1)
 			return -1;
@@ -573,11 +574,49 @@ public class MyBTree {
 	}
 
 
+
+	//print the tree diagonal 
+	public void diagonalTraverse(){
+		List<LinkedList<Node>> ll =this.diagonalTraverse(rootNode);
+		System.out.println();
+		for(LinkedList<Node> n : ll)
+			System.out.print("--"+n.toString()+"---");
+	}
+
+	public List<LinkedList<Node>> diagonalTraverse(Node node){
+		List<LinkedList<Node>> result =  new ArrayList<LinkedList<Node>>();
+		LinkedList<Node>ll = new LinkedList<Node>();
+		addAllRightNodes(ll,node);
+		while(ll.size() > 0){
+			result.add(ll);
+			LinkedList<Node> tempList = new LinkedList<Node>();
+			for(int i=0;i<ll.size();i++){
+				Node n = ll.get(i);
+				if(n.leftChild != null){
+					addAllRightNodes(tempList,n.leftChild);
+				}
+			}
+			ll = tempList;
+		}
+		return result;
+	}
+
+	public void addAllRightNodes(LinkedList<Node> ll ,Node n){
+		ll.add(n);
+		//		System.out.println(n.rightChild);
+		while(n.rightChild != null){
+			ll.add(n.rightChild);
+			n = n.rightChild;
+		}
+	}
+
+
+
 	// mirrior of a tree
 	public void mirriorTree(){
 		mirriorTree(rootNode);
 	}
-	
+
 	public void mirriorTree(Node node){
 		if(node == null )
 			return;
@@ -589,6 +628,52 @@ public class MyBTree {
 		Node temp = node.leftChild;
 		node.leftChild = node.rightChild;
 		node.rightChild = temp;
+	}
+
+	public void spiral(){
+		printSpiral(rootNode);
+	}
+	public  void printSpiral(Node node){
+		List<LinkedList<Node>> list = new ArrayList<LinkedList<Node>>();
+		if(node == null){
+			return;
+		}
+		LinkedList<Node> ll = new LinkedList<Node>();
+		ll.add(node);
+		LinkedList<Node> parent ;
+		int turnCount=0;
+		while(ll.size() >0){
+			list.add(ll);
+			turnCount ++;
+			parent = ll;
+			ll = new LinkedList<Node>();
+
+			if(turnCount%2 !=0){
+				for(int i=0;i<parent.size();i++){
+					Node n = parent.get(i);
+					if(n.leftChild != null)
+						ll.add(n.leftChild);
+					if(n.rightChild != null)
+						ll.add(n.rightChild);
+				}
+			}
+			else{
+				for(int i=parent.size()-1;i>=0;i--){
+					Node n= parent.get(i);
+					if(n.rightChild != null)
+						ll.add(n.rightChild);
+					if(n.leftChild != null)
+						ll.add(n.leftChild);
+				}
+			}
+
+
+		}
+
+		for(LinkedList<Node> llp:list)
+			System.out.println(llp.toString());
+
+
 	}
 
 
@@ -610,7 +695,7 @@ public class MyBTree {
 			this.name = name;
 		}
 		public  String toString(){
-			return (this.key+"--");
+			return (this.name+"--");
 		}
 	}
 

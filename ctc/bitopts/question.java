@@ -1,35 +1,37 @@
 package bitopts;
 
+import java.util.List;
+
 public class question {
 	public static void main(String args[]){
 		//doubleQ();
-		
+
 		String s = "010101010101";
 		System.out.println(s);
 		System.out.println(Integer.parseInt(s,2));
-		
-		
+
+
 		//System.out.println(Integer.toBinaryString(i1));
 		int a =21;
 		int b=31;
-//		System.out.println(Integer.toBinaryString(a));
-//		System.out.println(Integer.toBinaryString(a&1));
+		//		System.out.println(Integer.toBinaryString(a));
+		//		System.out.println(Integer.toBinaryString(a&1));
 		int count =0;
-		
+
 		//System.exit(0);
-		
-//		for(int c = a^b;c!=0;c= c >>1 ){
-//			System.out.println(Integer.toBinaryString(c));
-//			//System.out.println(c);
-//			count +=c&1;
-//			System.out.println(" ----"+Integer.toBinaryString(c&1));
-//		}
-		
+
+		//		for(int c = a^b;c!=0;c= c >>1 ){
+		//			System.out.println(Integer.toBinaryString(c));
+		//			//System.out.println(c);
+		//			count +=c&1;
+		//			System.out.println(" ----"+Integer.toBinaryString(c&1));
+		//		}
+
 		//System.out.println("count is "+count);
-//		doubleQ();
-//		mask();
+		//		doubleQ();
+		//		mask();
 		junk();
-		
+
 	}
 	public static void doubleQ(){
 
@@ -55,7 +57,7 @@ public class question {
 			}
 		}
 		System.out.println(bin.toString());
-	
+
 	}
 
 
@@ -70,8 +72,8 @@ public class question {
 		int lef = allones <<(j+1);
 		int right = (1 <<i);
 		System.out.println("right :"+Integer.toBinaryString(right));
-		 right = (1 <<i)-1;
-		
+		right = (1 <<i)-1;
+
 		System.out.println("right :"+Integer.toBinaryString(right));
 		int mask = lef | right;
 		//System.out.println("1 :"+Integer.toBinaryString(1));
@@ -83,21 +85,21 @@ public class question {
 		int c = n;
 		int c0 =0;
 		int c1 = 0;
-		
+
 		System.out.println("value :"+Integer.toBinaryString(c));
 		System.out.println("value :"+Integer.toBinaryString(c&1));
 		//c>>=1;
-		
+
 		while(((c&1) ==0) && (c !=0)){
 			c0++;
 			c >>= 1;
-			//System.out.println("value :"+Integer.toBinaryString(c));
+		//System.out.println("value :"+Integer.toBinaryString(c));
 		}
 		while((c&1)== 1){
 			c0++;
 			c>>=1;
 		}
-		
+
 		while((c&1)==1){
 			c1++;
 			c >>=1;
@@ -106,12 +108,12 @@ public class question {
 			System.out.println("eror");
 			return ;
 		}
-			int p = c0 + c1; // position of rightmost non-trailing zero
-			n |= (1 << p); // Flip rightmost non-trailing zero
-			n &= ~((1 << p) - 1); // Clear all bits to the right of p
-			n |= (1 << (c1 - 1)) - 1; // Insert (cl-1) ones on the right.
-			System.out.println("answer in binary"+Integer.toBinaryString(n));
-			System.out.println("answer "+n);
+		int p = c0 + c1; // position of rightmost non-trailing zero
+		n |= (1 << p); // Flip rightmost non-trailing zero
+		n &= ~((1 << p) - 1); // Clear all bits to the right of p
+		n |= (1 << (c1 - 1)) - 1; // Insert (cl-1) ones on the right.
+		System.out.println("answer in binary"+Integer.toBinaryString(n));
+		System.out.println("answer "+n);
 	}
 	public static void dectobinIT(int n){
 		int k =n;
@@ -123,6 +125,35 @@ public class question {
 			System.out.print("1");
 		else
 			System.out.print("0");
+		}
+	}
+
+	public static void printMissingNumber(List<Integer> no){
+		int count0=0;
+		int count1=0;
+		System.out.println("called function");
+		boolean odd =false;
+		if(no.get(0)%2 != 0)
+			odd = true;
+		for(int i:no){
+			//get last bit of no
+			if((i&1) >0)
+				count1++;
+			else
+				count0++;
+			System.out.println("count zero :"+ count0+ " count1 :"+count1+  " number "+i);
+			int diff =count1- count0;
+			if(odd){
+				if(diff <0)
+					System.out.println("No missing"+(i-1));
+				break;
+			}
+			else{
+				if(diff >0){
+					System.out.println("No missing"+(i-1));
+					break;
+				}
+			}
 		}
 	}
 

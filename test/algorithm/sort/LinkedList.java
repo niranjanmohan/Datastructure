@@ -2,8 +2,6 @@ package algorithm.sort;
 
 
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class LinkedList {
 	char data;
