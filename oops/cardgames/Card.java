@@ -1,5 +1,10 @@
 package cardgames;
 
+/**
+Card  object that represents a physical game card and should be reusable for any card game
+
+*/
+
 class Card{
 	Suit suit;
 	int faceValue;
